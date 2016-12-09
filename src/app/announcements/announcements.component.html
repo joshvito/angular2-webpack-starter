@@ -1,0 +1,17 @@
+<h2>User {{userName}}</h2>
+<div *ngIf="msg" class="msg">{{msg}}</div>
+<section *ngFor="let item of (announcements$ | async)">
+  <strong>{{item.title}}</strong>
+  <p>{{item.body}}</p>
+</section>
+
+<section>
+  <input
+    type="text" name="title"
+    [(ngModel)]="newTitle">
+  <textarea name="body" id=""
+    cols="30" rows="10"
+    [(ngModel)]="newBody"></textarea>
+  <button type="button"
+    (click)="addAnnouncement({title: newTitle, body: newBody})">Add</button>
+</section>
