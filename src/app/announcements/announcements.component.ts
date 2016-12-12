@@ -1,5 +1,5 @@
 // Exact copy except import UserService from core
-import { Component, OnInit }      from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IAnnouncement, AnnouncementsModel } from './announcements.model';
 
 @Component({
@@ -7,7 +7,8 @@ import { IAnnouncement, AnnouncementsModel } from './announcements.model';
   template: require('./announcements.component.html')
 })
 export class AnnouncementsComponent {
-
+  titleInput: string = '';
+  bodyTextArea: string = '';
   announcements: IAnnouncement[];
 
   constructor(
@@ -20,6 +21,8 @@ export class AnnouncementsComponent {
 
   addAnnouncement(announcement: IAnnouncement) {
     this._model.add(announcement);
+    this.titleInput = '';
+    this.bodyTextArea = '';
   }
 
   removeAnnouncement(announcement: IAnnouncement) {

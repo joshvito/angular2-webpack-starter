@@ -1,6 +1,7 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { List } from 'immutable';
 
 // import { AsyncService } from '../async-services/base.async-service';
 // import { Model } from './base.model';
@@ -13,12 +14,11 @@ interface IAnnouncement {
 
 @Injectable()
 class AnnouncementsModel {
-  announcements$: Observable<any>;
+  announcements$: Observable<List<IAnnouncement>>;
 
   constructor(protected _store: Store<any>) {
     this.announcements$ = this._store.select('announcements');
   }
-
 
   add(announcement: IAnnouncement) {
     this._store.dispatch(AnnouncementsActions.add(announcement));

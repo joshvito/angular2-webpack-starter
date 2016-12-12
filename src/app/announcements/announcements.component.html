@@ -7,12 +7,19 @@
 </section>
 
 <section>
-  <input
-    type="text" name="title"
-    [(ngModel)]="newTitle">
-  <textarea name="body" id=""
-    cols="30" rows="10"
-    [(ngModel)]="newBody"></textarea>
-  <button type="button"
-    (click)="addAnnouncement({title: newTitle, body: newBody})">Add</button>
+  <form #f="ngForm">
+    <input
+      type="text" name="title"
+      #announcementTitle
+      [(ngModel)]="titleInput">
+    <textarea name="body"
+      #announcementBody
+      cols="30" rows="10"
+      [(ngModel)]="bodyTextArea"></textarea>
+    <button type="submit"
+      (click)="addAnnouncement({
+        title: titleInput,
+        body: bodyTextArea
+      })">Add</button>
+  </form>
 </section>
