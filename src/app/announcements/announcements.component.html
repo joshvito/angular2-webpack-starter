@@ -1,8 +1,9 @@
-<h2>User {{userName}}</h2>
-<div *ngIf="msg" class="msg">{{msg}}</div>
-<section *ngFor="let item of (announcements$ | async)">
-  <strong>{{item.title}}</strong>
-  <p>{{item.body}}</p>
+<section *ngFor="let item of (_model.announcements$ | async)">
+  <li>
+    <strong>{{item.get('id')}} {{item.get('title')}}</strong>
+      | {{item.get('body')}}
+      <button type="button" (click)="removeAnnouncement(item)">Remove</button>
+  </li>
 </section>
 
 <section>

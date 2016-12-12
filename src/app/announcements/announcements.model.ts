@@ -14,16 +14,18 @@ interface IAnnouncement {
 @Injectable()
 class AnnouncementsModel {
   announcements$: Observable<any>;
-  announcement$: Observable<any>;
 
   constructor(protected _store: Store<any>) {
     this.announcements$ = this._store.select('announcements');
-    this.announcement$ = this._store.select('announcement');
   }
 
 
   add(announcement: IAnnouncement) {
     this._store.dispatch(AnnouncementsActions.add(announcement));
+  }
+
+  remove(announcement: IAnnouncement) {
+    this._store.dispatch(AnnouncementsActions.remove(announcement));
   }
 
 }

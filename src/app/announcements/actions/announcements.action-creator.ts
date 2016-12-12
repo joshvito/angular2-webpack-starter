@@ -12,9 +12,9 @@ export const AnnouncementsActions = {
     };
   },
 
-  remove(id: number): Action {
+  remove(announcement: IAnnouncement): Action {
     return {
-      payload: { id },
+      payload: announcement,
       type: REMOVE_ANNOUNCEMENT
     };
   },
