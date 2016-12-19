@@ -36,7 +36,7 @@ import { AppState } from './app.service';
   `
 })
 export class AppComponent {
-
+  url = 'http://campuslabs.com';
   constructor(
     public appState: AppState) {
 

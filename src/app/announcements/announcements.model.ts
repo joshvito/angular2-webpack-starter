@@ -3,9 +3,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { List } from 'immutable';
 
-// import { AsyncService } from '../async-services/base.async-service';
-// import { Model } from './base.model';
- import { AnnouncementsActions } from './actions/announcements.action-creator';
+import { AsyncService } from '../shared/async-services/base.async-service';
+import { Model } from '../shared/models/base.model';
+import { AnnouncementsActions } from './actions/announcements.action-creator';
 
 interface IAnnouncement {
   title: string;
@@ -13,11 +13,14 @@ interface IAnnouncement {
 }
 
 @Injectable()
-class AnnouncementsModel {
-  announcements$: Observable<List<IAnnouncement>>;
+class AnnouncementsModel extends Model {
+  announcements$: Observable<any>;
 
-  constructor(protected _store: Store<any>) {
-    this.announcements$ = this._store.select('announcements');
+  constructor (
+    protected _store: Store<any>,
+    @Optional() @Inject(AsyncService) _services: AsyncService[]) {
+      super(_services || []);
+      this.announcements$ = this._store.select('announcements');
   }
 
   add(announcement: IAnnouncement) {
